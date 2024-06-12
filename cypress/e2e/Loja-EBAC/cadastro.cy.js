@@ -19,6 +19,13 @@ describe('funcionalidade cadastro', () => {
         cy.get('.woocommerce-Button').click()
         cy.get('.woocommerce-message').should('exist')
     });
+    
+    it.only('deve completar o cadastro com sucesso - usando comando customizado', () => {
+        cy.preCadastro(faker.internet.email(), 'teste@123', faker.person.firstName(), faker.person.lastName())
+        cy.get('.woocommerce-message').should('exist')
+
+    })
+    
 
     it('Deve completar o cadastro com sucesso -Usando variaveis', () => {
         var nome = faker.person.firstName()
